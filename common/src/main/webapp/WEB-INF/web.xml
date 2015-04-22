@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <!-- 初始化spring mvc DispatcherServlet -->
+	<servlet>  
+	    <servlet-name>chapter2</servlet-name>  
+	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+	    <!-- 加载spring mvc配置文件 -->
+	    <init-param>
+	    	<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/spring.xml</param-value>
+	    </init-param>
+	    <load-on-startup>1</load-on-startup>  
+	</servlet>  
+	<servlet-mapping>  
+	    <servlet-name>chapter2</servlet-name>  
+	    <url-pattern>/</url-pattern>  
+	</servlet-mapping>
+	<!-- 监听，程序启动时加载spring bean配置文件 -->
+	<!-- 默认加载classpath下的applicationContext.xml文件 -->
+	<listener> 
+	  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+	</listener>
+	<!-- 加载自定义的spring bean配置文件  -->
+	<context-param> 
+	    <param-name>contextConfigLocation</param-name> 
+	    <param-value>classpath*:common-context.xml</param-value> 
+	</context-param>
+<!-- 	 <filter> -->
+<!-- 	    <filter-name>multipartFilter</filter-name> -->
+<!-- 	    <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 	    <filter-name>multipartFilter</filter-name> -->
+<!-- 	    <url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+</web-app>
